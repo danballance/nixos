@@ -18,6 +18,7 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
   programs.git = {
     enable = true;
     extraConfig = {
@@ -25,5 +26,11 @@
       user.email = "nixprivacy@pm.me";
       init.defaultBranch = "main";
     };
+  };
+
+  programs.nixvim = {
+    enable = true;
+    colorschemes.catppuccin.enable = true;
+    plugins.lualine.enable = true;
   };
 }
