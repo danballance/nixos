@@ -63,6 +63,7 @@
 
   # Enable flakes.
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.download-buffer-size = 500000000; # 500 MB
 
   # Envrionment settings
   environment.systemPackages = with pkgs; import ./packages.nix { inherit pkgs; };
