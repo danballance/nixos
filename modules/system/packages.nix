@@ -1,10 +1,12 @@
 { pkgs, ... }:
 with pkgs;
 [
-  git
-  vim
-  wget
   curl
+  ghostty
+  git
   gitkraken
+  vim
+  vscodium-fhs
+  wget
 ]
 
