@@ -1,7 +1,9 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports = [];
+  imports = [
+    inputs.zen-browser.homeModules.twilight
+  ];
 
   home.stateVersion = "25.05";
   programs.home-manager.enable = true;
@@ -36,7 +38,7 @@
       DisableTelemetry = true;
       DontCheckDefaultBrowser = true;
       NoDefaultBookmarks = true;
-      OfferToSaveLogins = false;
+      OfferToSaveLogins = true;
       EnableTrackingProtection = {
         Value = true;
         Locked = true;
