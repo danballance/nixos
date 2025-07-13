@@ -8,6 +8,11 @@
   home.stateVersion = "25.05";
   programs.home-manager.enable = true;
 
+  stylix.targets.vscode.profileNames = [
+    "default"
+    "js"
+  ];
+
   programs.git = {
     enable = true;
     extraConfig = {
@@ -19,7 +24,6 @@
 
   programs.nixvim = {
     enable = true;
-    colorschemes.catppuccin.enable = true;
     plugins.lualine.enable = true;
     viAlias = true;
     vimAlias = true;

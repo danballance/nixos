@@ -10,9 +10,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    stylix.url = "github:nix-community/stylix/release-25.05";
   };
 
-  outputs = { self, home-manager, nixpkgs, nixvim, ... }@inputs: {
+  outputs = { self, home-manager, nixpkgs, nixvim, stylix, ... }@inputs: {
 
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -28,14 +29,18 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.anoni = ./home.nix;
           home-manager.sharedModules = [
             nixvim.homeManagerModules.nixvim
           ];
 	  home-manager.extraSpecialArgs = {
 	    inherit inputs;
 	  };
+          home-manager.users.anoni = ./home.nix;
         }
+
+        # Stylix - make it pretty
+        stylix.nixosModules.stylix
+        ./modules/system/stylix.nix
       ];
     };
 
