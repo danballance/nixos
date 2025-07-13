@@ -5,6 +5,6 @@ with pkgs;
   vim
   wget
   curl
-  firefox
+  gitkraken
 ]
 
