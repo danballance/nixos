@@ -58,4 +58,28 @@
     };
   };
 
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscodium;
+    mutableExtensionsDir = false;
+    
+    profiles = {
+      js = {
+        extensions = with pkgs.vscode-marketplace; [
+          anthropic.claude-code
+          esbenp.prettier-vscode
+          pkief.material-icon-theme
+          redhat.vscode-yaml
+          vitest.explorer
+        ];
+        userSettings = {
+          "editor.formatOnSave" = true;
+          "[typescriptreact]" = {
+            "editor.defaultFormatter" = "esbenp.prettier-vscode";
+          };
+        };
+      };
+    };
+  };
+
 }

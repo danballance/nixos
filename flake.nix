@@ -11,9 +11,10 @@
     };
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     stylix.url = "github:nix-community/stylix/release-25.05";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-  outputs = { self, home-manager, nixpkgs, nixvim, stylix, ... }@inputs: {
+  outputs = { self, home-manager, nixpkgs, nixvim, stylix, nix-vscode-extensions, ... }@inputs: {
 
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -29,6 +30,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup";
           home-manager.sharedModules = [
             nixvim.homeManagerModules.nixvim
           ];
@@ -38,9 +40,17 @@
           home-manager.users.anoni = ./home.nix;
         }
 
+	# Overlay adding vscode extensions to home manager
+        {
+          nixpkgs.overlays = [
+            nix-vscode-extensions.overlays.default
+          ];
+        }
+
         # Stylix - make it pretty
         stylix.nixosModules.stylix
         ./modules/system/stylix.nix
+
       ];
     };
 
