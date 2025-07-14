@@ -6,7 +6,6 @@
   ];
 
   home.stateVersion = "25.05";
-  home.packages = [ pkgs.claude-code ];
   programs.home-manager.enable = true;
 
   stylix.targets.vscode.profileNames = [
@@ -21,6 +20,20 @@
       user.email = "nixprivacy@pm.me";
       init.defaultBranch = "main";
     };
+  };
+
+  programs.fish = {
+    enable = true;
+    shellInit = ''
+      set -gx EDITOR nvim
+    '';
+    plugins = [];
+    shellAliases = {};
+  };
+
+  programs.starship = {
+    enable = true;
+    enableFishIntegration = true;
   };
 
   programs.nixvim = {

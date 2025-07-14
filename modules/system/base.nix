@@ -5,6 +5,9 @@
     ../../hardware-configuration.nix
   ];
 
+  # Set the packages to install system-wide
+  environment.systemPackages = with pkgs; import ./packages.nix { inherit pkgs; };
+  
   # --- Bootloader ---
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -50,12 +53,17 @@
   # Enable printing.
   services.printing.enable = true;
 
+  # Shells
+  programs.fish.enable = true;
+  environment.shells = with pkgs; [ fish ];
+
   # --- User Account ---
   users.users.anoni = {
     isNormalUser = true;
     description = "Anoni";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
+    shell = pkgs.fish;
   };
 
   # --- System-wide Packages & Settings ---
@@ -76,8 +84,8 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="  # Nix Community
     ];
   };
+
   # Envrionment settings
-  environment.systemPackages = with pkgs; import ./packages.nix { inherit pkgs; };
   environment.variables.EDITOR = "vim";
 
   # --- System State ---
