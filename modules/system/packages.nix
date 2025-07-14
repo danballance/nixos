@@ -9,5 +9,6 @@ with pkgs;
   vim
   vscodium-fhs
   wget
+  obsidian
 ]
 
