@@ -6,6 +6,7 @@
   ];
 
   home.stateVersion = "25.05";
+  home.packages = [ pkgs.claude-code ];
   programs.home-manager.enable = true;
 
   stylix.targets.vscode.profileNames = [

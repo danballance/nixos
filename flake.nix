@@ -15,10 +15,16 @@
   };
 
   outputs = { self, home-manager, nixpkgs, nixvim, stylix, nix-vscode-extensions, ... }@inputs: {
-
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        # Overlays - packages installed via base.nix
+        {
+          nixpkgs.overlays = [
+            nix-vscode-extensions.overlays.default
+          ];
+        }
+
         # Base config
         ./modules/system/base.nix
       
@@ -38,13 +44,6 @@
 	    inherit inputs;
 	  };
           home-manager.users.anoni = ./home.nix;
-        }
-
-	# Overlay adding vscode extensions to home manager
-        {
-          nixpkgs.overlays = [
-            nix-vscode-extensions.overlays.default
-          ];
         }
 
         # Stylix - make it pretty

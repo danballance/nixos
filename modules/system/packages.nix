@@ -1,6 +1,7 @@
 { pkgs, ... }:
 with pkgs;
 [
+  claude-code
   curl
   ghostty
   git
