@@ -1,16 +1,16 @@
 {
   description = "Entrypoint flake";
-
+  
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-25.05";
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    stylix.url = "github:nix-community/stylix/release-25.05";
+    stylix.url = "github:nix-community/stylix";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
