@@ -36,11 +36,36 @@
     enableFishIntegration = true;
   };
 
-  programs.nixvim = {
+  programs.neovim = {
     enable = true;
-    plugins.lualine.enable = true;
     viAlias = true;
     vimAlias = true;
+    plugins = with pkgs.vimPlugins; [
+
+    ];
+    extraLuaConfig = ''
+      ${builtins.readFile ./modules/home/nvim/options.lua}
+    '';
+  };
+
+  programs.tmux = {
+    enable = true;
+    terminal = "tmux-256color";
+    historyLimit = 100000;
+    plugins = with pkgs;
+      [
+        {
+          plugin = tmuxPlugins.resurrect;
+          extraConfig = ''
+            set -g @resurrect-strategy-vim 'session'
+            set -g @resurrect-strategy-nvim 'session'
+            set -g @resurrect-capture-pane-contents 'on'
+          '';
+        }
+	{ plugin = tmuxPlugins.vim-tmux-navigator; }
+      ];
+    extraConfig = ''
+    '';
   };
 
   programs.zen-browser = {
@@ -74,7 +99,7 @@
 
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    package = pkgs.vscodium-fhs;
     mutableExtensionsDir = false;
     
     profiles = {
