@@ -6,7 +6,6 @@ with pkgs;
   ghostty
   gitkraken
   obsidian
-  starship
   wget
   wrangler
 ]

@@ -29,10 +29,10 @@
         ./modules/system/base.nix
       
         # Enable Gnome + config
-	./modules/system/gnome.nix
+	      ./modules/system/gnome.nix
 
         # Home Manager
-	home-manager.nixosModules.home-manager
+	      home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
@@ -40,9 +40,9 @@
           home-manager.sharedModules = [
             nixvim.homeManagerModules.nixvim
           ];
-	  home-manager.extraSpecialArgs = {
-	    inherit inputs;
-	  };
+	        home-manager.extraSpecialArgs = {
+	          inherit inputs;
+	        };
           home-manager.users.anoni = ./home.nix;
         }
 
