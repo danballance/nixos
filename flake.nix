@@ -12,9 +12,10 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     stylix.url = "github:nix-community/stylix";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+		nvf.url = "github:notashelf/nvf";
   };
 
-  outputs = { self, home-manager, nixpkgs, nixvim, stylix, nix-vscode-extensions, ... }@inputs: {
+  outputs = { self, home-manager, nixpkgs, nixvim, stylix, nix-vscode-extensions, nvf, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -30,6 +31,8 @@
       
         # Enable Gnome + config
 	      ./modules/system/gnome.nix
+
+				nvf.nixosModules.default
 
         # Home Manager
 	      home-manager.nixosModules.home-manager

@@ -1,12 +1,18 @@
-{ config, pkgs, inputs, ... }:
-
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     inputs.zen-browser.homeModules.twilight
   ];
 
   home.stateVersion = "25.05";
   programs.home-manager.enable = true;
+
+  home.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
 
   stylix.targets.vscode.profileNames = [
     "default"
@@ -36,22 +42,10 @@
     enableFishIntegration = true;
   };
 
-  programs.neovim = {
+  programs.zellij = {
     enable = true;
-    viAlias = true;
-    vimAlias = true;
-    plugins = with pkgs.vimPlugins; [
-
-    ];
-    extraLuaConfig = ''
-      ${builtins.readFile ./modules/home/nvim/options.lua}
-    '';
+    enableFishIntegration = true;
   };
-
-	programs.zellij = {
-    enable = true;
-		enableFishIntegration = true;
-	};
 
   programs.zen-browser = {
     enable = true;
@@ -86,7 +80,7 @@
     enable = true;
     package = pkgs.vscodium-fhs;
     mutableExtensionsDir = false;
-    
+
     profiles = {
       js = {
         extensions = with pkgs.vscode-marketplace; [
@@ -105,5 +99,4 @@
       };
     };
   };
-
 }
