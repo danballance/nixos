@@ -1,0 +1,17 @@
+layout {
+  tab cwd="~/.nixos" split_direction="vertical" {
+    pane {
+      edit "./home.nix"
+    }
+    pane split_direction="horizontal" {
+      pane {
+        command "ls"
+        args "-l"
+      }
+      pane {
+        command "git"
+        args "status"
+      }
+    }
+  }
+}

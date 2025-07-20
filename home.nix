@@ -235,6 +235,10 @@
   programs.zellij = {
     enable = true;
     enableFishIntegration = true;
+    attachExistingSession = true;
+    layouts = {
+      "nixos" = ./assets/zellij/layouts/nixos.kdl;
+    };
   };
 
   programs.zen-browser = {
