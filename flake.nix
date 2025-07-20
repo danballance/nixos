@@ -5,10 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     stylix.url = "github:nix-community/stylix";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
@@ -20,7 +16,6 @@
     self,
     home-manager,
     nixpkgs,
-    nixvim,
     stylix,
     nix-vscode-extensions,
     nvf,
@@ -54,9 +49,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
-          home-manager.sharedModules = [
-            nixvim.homeManagerModules.nixvim
-          ];
+          home-manager.sharedModules = [];
           home-manager.extraSpecialArgs = {
             inherit inputs;
           };
