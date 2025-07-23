@@ -197,6 +197,11 @@
     package = pkgs.rofi-wayland;
   };
 
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
   home.stateVersion = "25.05";
   programs.home-manager.enable = true;
 
@@ -280,9 +285,10 @@
         extensions = with pkgs.vscode-marketplace; [
           anthropic.claude-code
           esbenp.prettier-vscode
-          pkief.material-icon-theme
           redhat.vscode-yaml
           vitest.explorer
+          fill-labs.dependi
+          mkhl.direnv
         ];
         userSettings = {
           "editor.formatOnSave" = true;
@@ -290,6 +296,19 @@
             "editor.defaultFormatter" = "esbenp.prettier-vscode";
           };
         };
+      };
+      rust = {
+        extensions = with pkgs.vscode-marketplace; [
+          anthropic.claude-code
+          esbenp.prettier-vscode
+          redhat.vscode-yaml
+          jnoortheen.nix-ide
+          fill-labs.dependi
+          tamasfe.even-better-toml
+          rust-lang.rust-analyzer
+          mkhl.direnv
+        ];
+        userSettings = {};
       };
     };
   };
