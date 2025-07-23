@@ -6,6 +6,7 @@ with pkgs; [
   ghostty
   gitkraken
   obsidian
+  remmina
   ripgrep
   wget
   wrangler
