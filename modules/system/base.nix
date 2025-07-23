@@ -127,6 +127,7 @@
       vim.options.relativenumber = true;
       vim.options.termguicolors = true;
       vim.options.clipboard = "unnamedplus";
+      vim.options.mouse = "v";
       vim.globals.mapleader = " ";
       vim.globals.maplocalleader = " ";
 
