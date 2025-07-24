@@ -1,5 +1,6 @@
 {pkgs, ...}:
 with pkgs; [
+  # core
   base16-schemes
   claude-code
   curl
@@ -10,7 +11,9 @@ with pkgs; [
   ripgrep
   wget
   wrangler
-
+  # dev
+  devenv
+  poetry
   # Wayland/Hyprland
   kdePackages.polkit-kde-agent-1
   mako
