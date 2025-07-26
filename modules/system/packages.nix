@@ -7,6 +7,7 @@ with pkgs; [
   wget
 
   # apps
+  aider-chat
   claude-code
   ghostty
   gitkraken
