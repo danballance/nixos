@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ../../hardware-configuration.nix
   ];
@@ -74,6 +78,8 @@
       vim.statusline.lualine.enable = true;
 
       # plugins
+      vim.filetree.neo-tree.enable = true;
+
       vim.mini = {
         ai.enable = true;
         surround.enable = true;
@@ -108,11 +114,25 @@
       vim.lsp = {
         enable = true;
         formatOnSave = true;
-        lightbulb.enable = true;
+        lightbulb.enable = false;
         lspSignature.enable = true;
-        trouble.enable = true;
-        nvim-docs-view.enable = true;
+        trouble.enable = false;
+        nvim-docs-view.enable = false;
         inlayHints.enable = true;
+      };
+
+      vim.diagnostics = {
+        enable = true;
+        config = {
+          signs.text = lib.generators.mkLuaInline ''
+            {
+              [vim.diagnostic.severity.ERROR] = "󰅚 ",
+              [vim.diagnostic.severity.WARN] = "󰀪 ",
+            }
+          '';
+          underline = false;
+          virtual_text = true;
+        };
       };
 
       vim.utility.preview.markdownPreview = {
