@@ -214,6 +214,11 @@
     "js"
   ];
 
+  programs.broot = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
   programs.git = {
     enable = true;
     extraConfig = {
@@ -221,6 +226,7 @@
       user.email = "nixprivacy@pm.me";
       init.defaultBranch = "main";
     };
+    delta.enable = true;
   };
 
   programs.fish = {
@@ -229,7 +235,17 @@
       set -gx EDITOR nvim
     '';
     plugins = [];
-    shellAliases = {};
+    shellAliases = {
+      cat = "bat";
+      ls = "lsd";
+      find = "fd";
+      ps = "procs";
+    };
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
   };
 
   programs.starship = {

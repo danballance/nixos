@@ -1,19 +1,44 @@
 {pkgs, ...}:
 with pkgs; [
-  # core
+  # system
   base16-schemes
-  claude-code
   curl
+  nh
+  wget
+
+  # apps
+  claude-code
   ghostty
   gitkraken
+  lazydocker
+  lazygit
   obsidian
   remmina
-  ripgrep
-  wget
   wrangler
+
+  # modern cli tools
+  bat
+  broot
+  curlie
+  delta
+  doggo
+  duf
+  dust
+  fd
+  fzf
+  glances
+  gping
+  httpie
+  lsd
+  procs
+  ripgrep
+  xh
+  zoxide
+
   # dev
   devenv
   poetry
+
   # Wayland/Hyprland
   kdePackages.polkit-kde-agent-1
   mako
