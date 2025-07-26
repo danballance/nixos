@@ -15,6 +15,7 @@ with pkgs; [
   lazygit
   obsidian
   remmina
+  typora
   wrangler
 
   # modern cli tools
