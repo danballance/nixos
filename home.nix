@@ -212,6 +212,8 @@
   stylix.targets.vscode.profileNames = [
     "default"
     "js"
+    "python"
+    "rust"
   ];
 
   programs.broot = {
@@ -303,7 +305,6 @@
           esbenp.prettier-vscode
           redhat.vscode-yaml
           vitest.explorer
-          fill-labs.dependi
           mkhl.direnv
         ];
         userSettings = {
@@ -311,20 +312,47 @@
           "[typescriptreact]" = {
             "editor.defaultFormatter" = "esbenp.prettier-vscode";
           };
+          "editor.tabSize" = 2;
         };
       };
       rust = {
         extensions = with pkgs.vscode-marketplace; [
           anthropic.claude-code
-          esbenp.prettier-vscode
           redhat.vscode-yaml
           jnoortheen.nix-ide
-          fill-labs.dependi
           tamasfe.even-better-toml
           rust-lang.rust-analyzer
           mkhl.direnv
         ];
-        userSettings = {};
+        userSettings = {
+          #"editor.formatOnSave" = true;
+          #"[rust]" = {
+          #  "editor.defaultFormatter" = "esbenp.prettier-vscode";
+          #};
+          "editor.tabSize" = 2;
+        };
+      };
+      python = {
+        extensions = with pkgs.vscode-marketplace; [
+          anthropic.claude-code
+          redhat.vscode-yaml
+          jnoortheen.nix-ide
+          tamasfe.even-better-toml
+          mkhl.direnv
+          ms-python.python
+          ms-python.debugpy
+          ms-python.vscode-pylance
+          charliermarsh.ruff
+        ];
+        userSettings = {
+          "editor.formatOnSave" = true;
+          "[python]" = {
+            "editor.defaultFormatter" = "charliermarsh.ruff";
+          };
+          "editor.tabSize" = 4;
+          "python.languageServer" = "Pylance";
+          "python.analysis.autoImportCompletions" = true;
+        };
       };
     };
   };
