@@ -255,7 +255,7 @@
 
   programs.zellij = {
     enable = true;
-    enableFishIntegration = true;
+    enableFishIntegration = false;
     attachExistingSession = true;
     layouts = {
       "nixos" = ./assets/zellij/layouts/nixos.kdl;
