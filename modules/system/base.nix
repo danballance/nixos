@@ -11,8 +11,13 @@
   environment.systemPackages = import ./packages.nix {inherit pkgs;};
 
   # --- Bootloader ---
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    grub = {
+      gfxmodeEfi = "1024x768";
+    };
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
 
   # --- Networking ---
   networking.hostName = "nixos";
@@ -35,10 +40,13 @@
   console.keyMap = "uk";
 
   # --- Core Services ---
-  services.xserver.enable = true;
-  services.xserver.xkb = {
-    layout = "gb";
-    variant = "";
+  services.xserver = {
+    enable = true;
+    xkb = {
+      layout = "gb";
+      variant = "";
+    };
+    dpi = 116; # change depending on resolution
   };
 
   # Enable sound with PipeWire.
