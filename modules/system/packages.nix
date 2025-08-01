@@ -7,13 +7,16 @@ with pkgs; [
   wget
 
   # apps
-  aider-chat
   claude-code
   ghostty
   gitkraken
+  jetbrains.datagrip
   lazydocker
   lazygit
   obsidian
+  proton-pass
+  protonmail-desktop
+  protonvpn-gui
   remmina
   typora
   wrangler
@@ -31,6 +34,7 @@ with pkgs; [
   glances
   gping
   httpie
+  jq
   lsd
   procs
   ripgrep
@@ -40,6 +44,9 @@ with pkgs; [
   # dev
   devenv
   poetry
+  termshark
+  tshark
+  wireshark
 
   # Wayland/Hyprland
   kdePackages.polkit-kde-agent-1
