@@ -86,14 +86,8 @@
       vim.statusline.lualine.enable = true;
 
       # plugins
-      vim.filetree.neo-tree.enable = true;
-
-      vim.mini = {
-        ai.enable = true;
-        surround.enable = true;
-        pairs.enable = true;
-        bracketed.enable = true;
-      };
+      vim.utility.oil-nvim.enable = true;
+      vim.utility.undotree.enable = true;
 
       vim.telescope = {
         enable = true;
@@ -121,12 +115,17 @@
 
       vim.lsp = {
         enable = true;
-        formatOnSave = true;
-        lightbulb.enable = false;
+
+        # standard / default lsp configs for languages
+        lspconfig.enable = true;
+
         lspSignature.enable = true;
-        trouble.enable = false;
-        nvim-docs-view.enable = false;
         inlayHints.enable = true;
+        formatOnSave = true;
+        trouble.enable = true;
+
+        lightbulb.enable = false;
+        nvim-docs-view.enable = false;
       };
 
       vim.diagnostics = {
@@ -139,25 +138,130 @@
             }
           '';
           underline = false;
+          virtual_lines = false;
           virtual_text = true;
         };
       };
 
-      vim.utility.preview.markdownPreview = {
-        enable = true;
-        lazyRefresh = true;
-      };
-
-      # options
       vim.autocomplete.nvim-cmp.enable = true;
+
+      # vim options
+      ## globals
+      vim.globals.mapleader = " ";
+      vim.globals.maplocalleader = " ";
+      vim.globals.have_nerd_font = false;
+      ## keymaps
+      vim.keymaps = [
+        # navigation
+        {
+          key = "H";
+          mode = ["n" "v"];
+          action = "^";
+          desc = "Go to start of line";
+        }
+        {
+          key = "L";
+          mode = ["n" "v"];
+          action = "$";
+          desc = "Go to end of line";
+        }
+        # split nav
+        {
+          key = "<leader>t";
+          mode = ["n"];
+          lua = true;
+          action = ''
+            function()
+              vim.cmd.vnew()
+              vim.cmd.term()
+            end
+          '';
+          desc = "Split to terminal";
+        }
+        {
+          key = "<C-j>";
+          mode = ["n"];
+          action = "<C-W><C-j>";
+          desc = "Move to split below";
+        }
+        {
+          key = "<C-k>";
+          mode = ["n"];
+          action = "<C-W><C-k>";
+          desc = "Move to split above";
+        }
+        {
+          key = "<C-l>";
+          mode = ["n"];
+          action = "<C-W><C-l>";
+          desc = "Move to split on the right";
+        }
+        {
+          key = "<C-h>";
+          mode = ["n"];
+          action = "<C-W><C-h>";
+          desc = "Move to split on the left";
+        }
+        # terminal
+        {
+          key = "<Esc><Esc>";
+          mode = ["t"];
+          action = "<C-\\><C-n>";
+          desc = "Exit terminal mode";
+        }
+        # search
+        {
+          key = "<leader>/";
+          mode = ["n"];
+          action = ":noh<CR>";
+          desc = "Clear search highlight";
+        }
+        {
+          key = "<Esc>";
+          mode = ["n"];
+          action = ":noh<CR>";
+          desc = "Clear search highlight";
+        }
+        # edit
+        {
+          key = "K";
+          mode = ["v"];
+          action = ":m '<-2<CR>gv=gv";
+          desc = "Move line UP";
+        }
+        {
+          key = "J";
+          mode = ["v"];
+          action = ":m '>+1<CR>gv=gv";
+          desc = "Move line UP";
+        }
+      ];
+      # auto commands
+      vim.autocmds = [
+        {
+          event = ["TextYankPost"];
+          callback = lib.generators.mkLuaInline ''
+            function()
+              vim.hl.on_yank()
+            end
+          '';
+          desc = "Visual indication of yanked content";
+        }
+      ];
+      ## options
       vim.options.tabstop = 2;
       vim.options.shiftwidth = 2;
       vim.options.relativenumber = true;
       vim.options.termguicolors = true;
       vim.options.clipboard = "unnamedplus";
-      vim.options.mouse = "v";
-      vim.globals.mapleader = " ";
-      vim.globals.maplocalleader = " ";
+      vim.options.mouse = "";
+      vim.options.undofile = true;
+      vim.options.ignorecase = true;
+      vim.options.smartcase = true;
+      vim.options.signcolumn = "yes";
+      vim.options.updatetime = 250;
+      vim.options.timeoutlen = 300;
+      vim.options.scrolloff = 10;
 
       vim.languages = {
         enableLSP = true;
