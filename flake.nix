@@ -35,7 +35,7 @@
         ./modules/system/base.nix
 
         # Enable Gnome + config
-        ./modules/system/gnome.nix
+        #./modules/system/gnome.nix
 
         # hyprland
         ./modules/system/hyprland.nix
