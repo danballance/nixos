@@ -54,6 +54,9 @@
         "$mainMod, Q, killactive" # [Q]uit window
         "$mainMod, X, exit" # e[X]it hyprland
 
+        # Physical power button shows logout menu
+        ", XF86PowerOff, exec, wlogout"
+
         # Switch workspaces
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
@@ -308,6 +311,7 @@
 
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
+    wlogout
   ];
 
   stylix.targets.vscode.profileNames = [
