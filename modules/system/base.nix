@@ -63,6 +63,13 @@
   # Enable printing.
   services.printing.enable = true;
 
+  # Ignore the physical power key to avoid unintended sleeps when it's hit
+  # instead of Backspace; this lets Hyprland remap XF86PowerOff in userland
+  # to show a confirmation menu.
+  services.logind.extraConfig = ''
+    HandlePowerKey=ignore
+  '';
+
   # Shells
   programs.fish.enable = true;
   environment.shells = with pkgs; [fish];

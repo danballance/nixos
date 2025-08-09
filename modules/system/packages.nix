@@ -54,4 +54,5 @@ with pkgs; [
   rofi-wayland
   waybar
   wl-clipboard
+  wlogout
 ]
