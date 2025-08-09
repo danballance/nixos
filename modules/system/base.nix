@@ -63,9 +63,8 @@
   # Enable printing.
   services.printing.enable = true;
 
-  # Ignore the physical power key to avoid unintended sleeps when it's hit
-  # instead of Backspace; this lets Hyprland remap XF86PowerOff in userland
-  # to show a confirmation menu.
+  # Ignore the physical power key to avoid unintended sleeps when it's hit;
+  # this lets Hyprland remap XF86PowerOff in userland to show a dialog
   services.logind.extraConfig = ''
     HandlePowerKey=ignore
   '';

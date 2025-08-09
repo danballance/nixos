@@ -54,8 +54,8 @@
         "$mainMod, Q, killactive" # [Q]uit window
         "$mainMod, X, exit" # e[X]it hyprland
 
-        # Physical power button shows logout menu instead of immediate sleep
-        ", XF86PowerOff, exec, wlogout" # confirmation menu prevents instant suspend on accidental press
+        # Physical power button shows logout menu
+        ", XF86PowerOff, exec, wlogout"
 
         # Switch workspaces
         "$mainMod, 1, workspace, 1"
