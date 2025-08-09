@@ -8,6 +8,7 @@ with pkgs; [
 
   # apps
   claude-code
+  code-cursor
   ghostty
   gitkraken
   jetbrains.datagrip
@@ -20,8 +21,10 @@ with pkgs; [
   remmina
   typora
   wrangler
+  zed-editor
 
   # modern cli tools
+  atop
   bat
   broot
   curlie
@@ -36,17 +39,15 @@ with pkgs; [
   httpie
   jq
   lsd
+  nmon
   procs
   ripgrep
   xh
-  zoxide
+  yazi
 
   # dev
   devenv
   poetry
-  termshark
-  tshark
-  wireshark
 
   # Wayland/Hyprland
   kdePackages.polkit-kde-agent-1
