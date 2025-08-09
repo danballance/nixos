@@ -95,6 +95,20 @@
       vim.utility.oil-nvim.enable = true;
       vim.utility.undotree.enable = true;
 
+      vim.extraPlugins = {
+        claude-code = {
+          package = pkgs.vimPlugins.claude-code-nvim;
+          setup = ''
+            require("claude-code").setup({
+              window = {
+                split_ratio = 0.4,
+                position = "vertical",
+              }
+            })
+          '';
+        };
+      };
+
       vim.telescope = {
         enable = true;
         extensions = [
@@ -155,7 +169,7 @@
       ## globals
       vim.globals.mapleader = " ";
       vim.globals.maplocalleader = " ";
-      vim.globals.have_nerd_font = false;
+      vim.globals.have_nerd_font = true;
       ## keymaps
       vim.keymaps = [
         # navigation
@@ -241,6 +255,13 @@
           action = ":m '>+1<CR>gv=gv";
           desc = "Move line UP";
         }
+        # claude code
+        {
+          key = "<leader>cc";
+          mode = ["n"];
+          action = "<cmd>ClaudeCode<CR>";
+          desc = "Toggle Claude Code";
+        }
       ];
       # auto commands
       vim.autocmds = [
@@ -275,12 +296,18 @@
         enableFormat = true;
 
         nix.enable = true;
-        python.enable = true;
+        python = {
+          enable = true;
+          format.type = "ruff";
+        };
         ts.enable = true;
         clang.enable = true;
         rust.enable = true;
         zig.enable = true;
-        markdown.enable = true;
+        markdown = {
+          enable = true;
+          format.type = "prettierd";
+        };
         bash.enable = true;
         lua.enable = true;
       };
