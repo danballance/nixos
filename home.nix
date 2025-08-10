@@ -47,11 +47,14 @@
 
       bind = [
         # Application shortcuts
-        "$mainMod, T, execr, ghostty" # [T]erminal
         "$mainMod, B, exec, zen-twilight" # [B]rowser
+        "$mainMod, D, exec, datagrip" # [D]atabase
         "$mainMod, F, exec, nautilus" # [F]ile explorer
+        "$mainMod, G, exec, gitkraken" # [G]itkraken
         "$mainMod, L, exec, rofi -show drun" # app [L]auncher
         "$mainMod, Q, killactive" # [Q]uit window
+        "$mainMod, T, execr, ghostty" # [T]erminal
+        "$mainMod, V, execr, remmina" # [V]NC
         "$mainMod, X, exit" # e[X]it hyprland
 
         # Physical power button shows logout menu
@@ -92,7 +95,7 @@
       exec-once = [
         # start services
         "waybar"
-        "mako"
+        "swaync"
         "/usr/lib/polkit-kde-authentication-agent-1"
         "hyprpaper"
       ];
@@ -285,17 +288,41 @@
     '';
   };
 
-  # Mako notification daemon (styled by Stylix)
-  services.mako = {
+  #services.mako = {
+  #  enable = true;
+  #  defaultTimeout = 5000;
+  #  ignoreTimeout = true;
+  #  layer = "overlay";
+  #  maxVisible = 5;
+  #  sort = "-time";
+  #};
+
+  services.swaync = {
     enable = true;
-    defaultTimeout = 5000;
-    ignoreTimeout = true;
-    layer = "overlay";
-    maxVisible = 5;
-    sort = "-time";
+    settings = {
+      positionX = "right";
+      positionY = "top";
+      layer-shell = true;
+      layer = "overlay";
+      control-center-layer = "top";
+      widgets = ["mpris" "dnd" "title" "notifications" "inhibitors" "backlight" "volume"];
+      widget-config = {
+        title = {
+          text = "Notifications";
+          clear-all-button = true;
+          button-text = "";
+        };
+        dnd = {
+          text = " DND";
+        };
+        mpris = {
+          image-size = 60;
+          image-radius = 12;
+        };
+      };
+    };
   };
 
-  # Rofi configuration (styled by Stylix)
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
@@ -310,16 +337,21 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    kdePackages.polkit-kde-agent-1
     nerd-fonts.jetbrains-mono
+    swaybg
+    swaynotificationcenter
+    waybar
+    wl-clipboard
     wlogout
   ];
 
-  stylix.targets.vscode.profileNames = [
-    "default"
-    "js"
-    "python"
-    "rust"
-  ];
+  #stylix.targets.vscode.profileNames = [
+  #  "default"
+  #  "js"
+  #  "python"
+  #  "rust"
+  #];
 
   programs.broot = {
     enable = true;

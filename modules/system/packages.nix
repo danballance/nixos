@@ -48,11 +48,4 @@ with pkgs; [
   # dev
   devenv
   poetry
-
-  # Wayland/Hyprland
-  kdePackages.polkit-kde-agent-1
-  mako
-  rofi-wayland
-  waybar
-  wl-clipboard
 ]

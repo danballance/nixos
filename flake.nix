@@ -6,7 +6,7 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    stylix.url = "github:nix-community/stylix";
+    #stylix.url = "github:nix-community/stylix";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     nvf.url = "github:notashelf/nvf";
     hyprland.url = "github:hyprwm/Hyprland";
@@ -16,7 +16,7 @@
     self,
     home-manager,
     nixpkgs,
-    stylix,
+    #stylix,
     nix-vscode-extensions,
     nvf,
     ...
@@ -57,8 +57,8 @@
         }
 
         # Stylix - make it pretty
-        stylix.nixosModules.stylix
-        ./modules/system/stylix.nix
+        #stylix.nixosModules.stylix
+        #./modules/system/stylix.nix
       ];
 
       specialArgs = {inherit inputs;};
