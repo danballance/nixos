@@ -69,6 +69,9 @@
     HandlePowerKey=ignore
   '';
 
+  # support dynamic linking
+  programs.nix-ld.enable = true;
+
   # Shells
   programs.fish.enable = true;
   environment.shells = with pkgs; [fish];
