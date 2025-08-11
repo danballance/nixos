@@ -36,16 +36,6 @@
     nix-direnv.enable = true;
   };
 
-  home.packages = with pkgs; [
-    kdePackages.polkit-kde-agent-1
-    nerd-fonts.jetbrains-mono
-    swaybg
-    swaynotificationcenter
-    waybar
-    wl-clipboard
-    wlogout
-  ];
-
   programs.broot = {
     enable = true;
     enableFishIntegration = true;
