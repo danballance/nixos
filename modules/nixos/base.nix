@@ -3,10 +3,6 @@
   lib,
   ...
 }: {
-  imports = [
-    ../../hardware-configuration.nix
-  ];
-
   # Set the packages to install system-wide
   environment.systemPackages = import ./packages.nix {inherit pkgs;};
 
