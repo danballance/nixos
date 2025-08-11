@@ -9,6 +9,7 @@ with pkgs; [
   # apps
   claude-code
   code-cursor
+  discord
   ghostty
   gitkraken
   jetbrains.datagrip
