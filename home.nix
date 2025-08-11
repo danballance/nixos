@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    inputs.zen-browser.homeModules.twilight
+    inputs.zen-browser.homeModules.beta
   ];
 
   wayland.windowManager.hyprland = {
@@ -47,7 +47,7 @@
 
       bind = [
         # Application shortcuts
-        "$mainMod, B, exec, zen-twilight" # [B]rowser
+        "$mainMod, B, exec, zen" # [B]rowser
         "$mainMod, D, exec, datagrip" # [D]atabase
         "$mainMod, F, exec, nautilus" # [F]ile explorer
         "$mainMod, G, exec, gitkraken" # [G]itkraken
