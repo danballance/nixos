@@ -12,56 +12,21 @@
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = {
-    self,
-    home-manager,
-    nixpkgs,
-    #stylix,
-    nix-vscode-extensions,
-    nvf,
-    ...
-  } @ inputs: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+  outputs = { self, home-manager, nixpkgs, nix-vscode-extensions, nvf, ... } @ inputs:
+    let
       system = "x86_64-linux";
-      modules = [
-        # Overlays - packages installed via base.nix
-        {
-          nixpkgs.overlays = [
-            nix-vscode-extensions.overlays.default
-          ];
-        }
+    in {
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs; };
+        modules = [ ./hosts/nixos ];
+      };
 
-        # Base config
-        ./modules/system/base.nix
-
-        # Enable Gnome + config
-        #./modules/system/gnome.nix
-
-        # hyprland
-        ./modules/system/hyprland.nix
-
-        # neovim
-        nvf.nixosModules.default
-
-        # Home Manager
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "backup";
-          home-manager.sharedModules = [];
-          home-manager.extraSpecialArgs = {
-            inherit inputs;
-          };
-          home-manager.users.anoni = ./home.nix;
-        }
-
-        # Stylix - make it pretty
-        #stylix.nixosModules.stylix
-        #./modules/system/stylix.nix
-      ];
-
-      specialArgs = {inherit inputs;};
+      homeConfigurations."anoni@nixos" = home-manager.lib.homeManagerConfiguration {
+        inherit system;
+        pkgs = nixpkgs.legacyPackages.${system};
+        extraSpecialArgs = { inherit inputs; };
+        modules = [ ./home/anoni.nix ];
+      };
     };
-  };
 }
