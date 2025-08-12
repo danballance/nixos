@@ -2,23 +2,24 @@
   description = "Entrypoint flake";
 
   inputs = {
+    # nix
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # home-manager
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    #stylix.url = "github:nix-community/stylix";
+    # others
+    hyprland.url = "github:hyprwm/Hyprland";
+    kiro.url = "github:johnkferguson/kiro-linux-flake";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     nvf.url = "github:notashelf/nvf";
-    hyprland.url = "github:hyprwm/Hyprland";
+    #stylix.url = "github:nix-community/stylix";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
   outputs = {
     self,
-    home-manager,
     nixpkgs,
-    #stylix,
-    nix-vscode-extensions,
-    nvf,
+    home-manager,
     ...
   } @ inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
@@ -27,7 +28,7 @@
         # Overlays - packages installed via base.nix
         {
           nixpkgs.overlays = [
-            nix-vscode-extensions.overlays.default
+            inputs.nix-vscode-extensions.overlays.default
           ];
         }
 
@@ -40,8 +41,11 @@
         # hyprland
         ./modules/system/hyprland.nix
 
+        # kiro
+        ./modules/system/kiro.nix
+
         # neovim
-        nvf.nixosModules.default
+        inputs.nvf.nixosModules.default
 
         # Home Manager
         home-manager.nixosModules.home-manager
@@ -57,7 +61,7 @@
         }
 
         # Stylix - make it pretty
-        #stylix.nixosModules.stylix
+        #inputs.stylix.nixosModules.stylix
         #./modules/system/stylix.nix
       ];
 
