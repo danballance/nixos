@@ -26,7 +26,7 @@
       inherit system;
       modules = [
         ./hosts/desktop/default.nix
-        inputs.nixosModules.default
+        inputs.nvf.nixosModules.default
       ];
       specialArgs = {inherit inputs;};
     };
