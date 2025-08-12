@@ -4,10 +4,10 @@ This repository implements a modular layout that separates system configuration 
 
 ## Layout
 
-- `hosts/desktop/default.nix` – top-level NixOS definition for the `desktop` host. It imports hardware settings and reusable modules from `modules/nixos`.
-- `home/anoni.nix` – Home Manager configuration for user `anoni` on `desktop`.
-- `modules/nixos/` – reusable NixOS modules such as `base.nix`, `hyprland.nix`, and `packages.nix`.
-- `modules/home-manager/` – Home Manager modules providing Hyprland and user program settings.
+- `hosts/desktop/default.nix` – top-level NixOS definition for the `desktop` host. It imports hardware settings and individual service modules from `modules/nixos`.
+- `home/anoni.nix` – Home Manager configuration for user `anoni` on `desktop` composed from modular program files in `modules/home-manager`.
+- `modules/nixos/` – reusable NixOS modules split per program or service (e.g. `bootloader.nix`, `networking.nix`, `nixpkgs.nix`).
+- `modules/home-manager/` – Home Manager modules providing Hyprland, Waybar, and individual user program settings.
 
 ## Usage
 
