@@ -2,7 +2,7 @@
   description = "Modular NixOS configuration";
 
   inputs = {
-    # nix
+    # nixos
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # home-manager
     home-manager.url = "github:nix-community/home-manager/master";
@@ -14,24 +14,27 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
-  outputs = { self, nixpkgs, home-manager, nvf, ... }@inputs:
-  let
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: let
     system = "x86_64-linux";
   in {
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
       inherit system;
       modules = [
         ./hosts/desktop/default.nix
-        nvf.nixosModules.default
+        inputs.nixosModules.default
       ];
-      specialArgs = { inherit inputs; };
+      specialArgs = {inherit inputs;};
     };
 
-    homeConfigurations."anoni@desktop" =
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        extraSpecialArgs = { inherit inputs; };
-        modules = [ ./home/anoni.nix ];
-      };
+    homeConfigurations."anoni@desktop" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.${system};
+      extraSpecialArgs = {inherit inputs;};
+      modules = [./home/anoni.nix];
+    };
   };
 }
