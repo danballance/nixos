@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }:
 {
+  pkgs,
+  lib,
+  ...
+}: {
   programs.nvf = {
     enable = true;
     settings = {
@@ -205,7 +208,6 @@
       vim.options.scrolloff = 10;
 
       vim.languages = {
-        enableLSP = true;
         enableTreesitter = true;
         enableFormat = true;
 
@@ -228,4 +230,3 @@
     };
   };
 }
-
