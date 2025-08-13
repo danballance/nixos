@@ -8,6 +8,7 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # others
+    hyprland.url = "github:hyprwm/Hyprland";
     kiro.url = "github:johnkferguson/kiro-linux-flake";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     nvf.url = "github:notashelf/nvf";
