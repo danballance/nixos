@@ -1,8 +1,11 @@
-{ inputs, pkgs, ... }:
 {
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/nixos/bootloader.nix
+    ../../modules/nixos/boot.nix
     ../../modules/nixos/networking.nix
     ../../modules/nixos/localization.nix
     ../../modules/nixos/xserver.nix
@@ -31,7 +34,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {inherit inputs;};
     users.anoni = import ../../home/anoni.nix;
   };
 }
