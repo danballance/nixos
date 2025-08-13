@@ -1,5 +1,8 @@
-{ pkgs, inputs, ... }:
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ../modules/home-manager/hyprland.nix
     ../modules/home-manager/waybar.nix
@@ -17,5 +20,6 @@
   ];
 
   home.stateVersion = "25.05";
+  home.shell.enableFishIntegration = true;
   programs.home-manager.enable = true;
 }
