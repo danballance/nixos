@@ -17,6 +17,7 @@
     lazydocker
     lazygit
     obsidian
+    opencode
     proton-pass
     protonmail-desktop
     protonvpn-gui
