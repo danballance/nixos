@@ -13,6 +13,8 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     nvf.url = "github:notashelf/nvf";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    codex.url = "github:Castrozan/codex-flake";
+    codex.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {

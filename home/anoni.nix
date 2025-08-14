@@ -17,6 +17,7 @@
     ../modules/home-manager/zen-browser.nix
     ../modules/home-manager/vscode.nix
     ../modules/home-manager/packages.nix
+    ../modules/home-manager/codex.nix
   ];
 
   home.stateVersion = "25.05";
