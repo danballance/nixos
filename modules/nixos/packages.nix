@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     # system
     base16-schemes
@@ -8,6 +7,7 @@
     wget
 
     # apps
+    brave
     claude-code
     code-cursor
     discord
