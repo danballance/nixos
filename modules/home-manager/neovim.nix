@@ -21,28 +21,47 @@
     '';
 
     plugins = with pkgs.vimPlugins; [
-			
-			{
-				plugin = claude-code-nvim;
+      {
+        plugin = claude-code-nvim;
         config = toLuaFile ../../assets/nvim/plugin/claude-code.lua;
-			}
+      }
 
-			{
-				plugin = lualine-nvim;
-				config = toLuaFile ../../assets/nvim/plugin/lualine.lua;
-			}
+      {
+        plugin = lualine-nvim;
+        config = toLuaFile ../../assets/nvim/plugin/lualine.lua;
+      }
 
-			{
-				plugin = oil-nvim;
-				config = toLua "require(\"oil\").setup()";
-			}
+      {
+        plugin = oil-nvim;
+        config = toLua "require(\"oil\").setup()";
+      }
 
-			{
+      {
         plugin = telescope-nvim;
         config = toLuaFile ../../assets/nvim/plugin/telescope.lua;
       }
       telescope-fzf-native-nvim
 
-		];
+      {
+        plugin = nvim-lspconfig;
+        config = toLuaFile ../../assets/nvim/plugin/lsp.lua;
+      }
+
+      {
+        plugin = nvim-cmp;
+        config = toLuaFile ../../assets/nvim/plugin/cmp.lua;
+      }
+      cmp-nvim-lsp
+      cmp-buffer
+      cmp-path
+      cmp_luasnip
+      luasnip
+      friendly-snippets
+
+      {
+        plugin = (nvim-treesitter.withAllGrammars);
+        config = toLuaFile ../../assets/nvim/plugin/treesitter.lua;
+      }
+    ];
   };
 }
