@@ -7,5 +7,12 @@
     hyprpaper
     wl-clipboard
     wlogout
+
+    # LSP servers
+    nixd
+    basedpyright
+    nodePackages.typescript-language-server
+    nodePackages.typescript
+    rust-analyzer
   ];
 }

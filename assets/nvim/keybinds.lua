@@ -22,6 +22,9 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")  -- move line down
 -- claude code
 vim.keymap.set("n", "<leader>cc", "<cmd>ClaudeCode<CR>")  -- toggle Claude
 
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic error messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- See `:help telescope.builtin`
