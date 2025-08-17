@@ -16,7 +16,6 @@
     ../../modules/nixos/shells.nix
     ../../modules/nixos/fonts.nix
     ../../modules/nixos/user-anoni.nix
-    ../../modules/nixos/nvf.nix
     ../../modules/nixos/packages.nix
     ../../modules/nixos/nixpkgs.nix
     ../../modules/nixos/environment.nix

@@ -18,6 +18,7 @@
     ../modules/home-manager/vscode.nix
     ../modules/home-manager/packages.nix
     ../modules/home-manager/codex.nix
+    ../modules/home-manager/neovim.nix
   ];
 
   home.stateVersion = "25.05";

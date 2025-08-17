@@ -8,13 +8,12 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # others
+    codex.url = "github:Castrozan/codex-flake";
+    codex.inputs.nixpkgs.follows = "nixpkgs";
     hyprland.url = "github:hyprwm/Hyprland";
     kiro.url = "github:johnkferguson/kiro-linux-flake";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-    nvf.url = "github:notashelf/nvf";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    codex.url = "github:Castrozan/codex-flake";
-    codex.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -29,7 +28,6 @@
       inherit system;
       modules = [
         ./hosts/desktop/default.nix
-        inputs.nvf.nixosModules.default
       ];
       specialArgs = {inherit inputs;};
     };
