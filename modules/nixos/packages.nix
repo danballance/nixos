@@ -27,6 +27,7 @@
     zed-editor
 
     # modern cli tools
+		atac
     atop
     bat
     broot
@@ -49,6 +50,8 @@
     yazi
 
     # dev
+		awscli2
+		aws-sam-cli
     devenv
     poetry
   ];
