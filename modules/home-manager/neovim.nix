@@ -11,14 +11,6 @@
   in {
     enable = true;
 
-    extraPackages = with pkgs; [
-      cargo
-      rustc
-      rust-analyzer
-      rustfmt
-      clippy
-    ];
-
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
@@ -33,43 +25,40 @@
         plugin = claude-code-nvim;
         config = toLuaFile ../../assets/nvim/plugin/claude-code.lua;
       }
-
+      cmp-nvim-lsp
+      cmp-buffer
+      cmp_luasnip
+      cmp-path
+      friendly-snippets
       {
         plugin = lualine-nvim;
         config = toLuaFile ../../assets/nvim/plugin/lualine.lua;
       }
-
-      {
-        plugin = oil-nvim;
-        config = toLua "require(\"oil\").setup()";
-      }
-
-      {
-        plugin = telescope-nvim;
-        config = toLuaFile ../../assets/nvim/plugin/telescope.lua;
-      }
-      telescope-fzf-native-nvim
-
+      luasnip
+			mini-icons
       {
         plugin = nvim-lspconfig;
         config = toLuaFile ../../assets/nvim/plugin/lsp.lua;
       }
-
       {
         plugin = nvim-cmp;
         config = toLuaFile ../../assets/nvim/plugin/cmp.lua;
       }
-      cmp-nvim-lsp
-      cmp-buffer
-      cmp-path
-      cmp_luasnip
-      luasnip
-      friendly-snippets
-
       {
         plugin = (nvim-treesitter.withAllGrammars);
         config = toLuaFile ../../assets/nvim/plugin/treesitter.lua;
       }
+      {
+        plugin = oil-nvim;
+        config = toLua "require(\"oil\").setup()";
+      }
+			rustaceanvim
+			telescope-fzf-native-nvim
+      {
+        plugin = telescope-nvim;
+        config = toLuaFile ../../assets/nvim/plugin/telescope.lua;
+      }
+			which-key-nvim
     ];
   };
 }

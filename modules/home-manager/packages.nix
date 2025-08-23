@@ -13,12 +13,5 @@
     basedpyright
     nodePackages.typescript-language-server
     nodePackages.typescript
-    rust-analyzer
-
-    # Rust tooling
-    cargo
-    rustc
-    rustfmt
-    clippy
   ];
 }
