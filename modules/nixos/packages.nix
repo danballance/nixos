@@ -53,6 +53,13 @@
 		awscli2
 		aws-sam-cli
     devenv
+		# python
     poetry
+		# rust
+		cargo
+		clippy
+		rust-analyzer
+		rustc
+		rustfmt
   ];
 }

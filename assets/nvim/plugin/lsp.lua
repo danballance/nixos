@@ -4,8 +4,9 @@ vim.diagnostic.config({
   float = { border = 'rounded' },
   signs = {
     text = {
-      [vim.diagnostic.severity.ERROR] = " ",
-      [vim.diagnostic.severity.WARN] = " ",
+    	[vim.diagnostic.severity.WARN] = "󰀪 ",
+      [vim.diagnostic.severity.ERROR] = "󰅚 ",
+      [vim.diagnostic.severity.WARN] = "󰀪 ",
       [vim.diagnostic.severity.HINT] = " ",
       [vim.diagnostic.severity.INFO] = " ",
     }
@@ -40,17 +41,6 @@ for server, config in pairs(servers) do
   config.on_attach = on_attach
   lspconfig[server].setup(config)
 end
-
-lspconfig.rust_analyzer.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-  settings = {
-    ['rust-analyzer'] = {
-      cargo = { allFeatures = true },
-      checkOnSave = { command = 'clippy' },
-    },
-  },
-})
 
 vim.api.nvim_create_autocmd('BufWritePre', {
   callback = function(event)

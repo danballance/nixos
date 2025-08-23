@@ -1,3 +1,6 @@
+-- WhichKey - check keybinds
+vim.keymap.set("n", "M", ":WhichKey<CR>")  -- go to start of line
+
 -- general navigation
 vim.keymap.set({"n","v"}, "H", "^")  -- go to start of line
 vim.keymap.set({"n","v"}, "L", "$")  -- go to end of line
