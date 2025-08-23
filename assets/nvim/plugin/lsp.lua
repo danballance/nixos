@@ -33,13 +33,24 @@ local on_attach = function(_, bufnr)
   nmap('<leader>f', function() vim.lsp.buf.format({ async = false }) end, '[F]ormat buffer')
 end
 
-local servers = { nixd = {}, basedpyright = {}, ts_ls = {}, rust_analyzer = {} }
+local servers = { nixd = {}, basedpyright = {}, ts_ls = {} }
 
 for server, config in pairs(servers) do
   config.capabilities = capabilities
   config.on_attach = on_attach
   lspconfig[server].setup(config)
 end
+
+lspconfig.rust_analyzer.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  settings = {
+    ['rust-analyzer'] = {
+      cargo = { allFeatures = true },
+      checkOnSave = { command = 'clippy' },
+    },
+  },
+})
 
 vim.api.nvim_create_autocmd('BufWritePre', {
   callback = function(event)

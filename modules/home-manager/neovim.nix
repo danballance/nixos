@@ -11,6 +11,14 @@
   in {
     enable = true;
 
+    extraPackages = with pkgs; [
+      cargo
+      rustc
+      rust-analyzer
+      rustfmt
+      clippy
+    ];
+
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
