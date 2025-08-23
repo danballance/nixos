@@ -14,8 +14,6 @@
     ghostty
     gitkraken
     jetbrains.datagrip
-    lazydocker
-    lazygit
     obsidian
     opencode
     proton-pass
@@ -30,6 +28,7 @@
 		atac
     atop
     bat
+		below
     broot
     curlie
     delta
@@ -38,10 +37,14 @@
     dust
     fd
     fzf
-    glances
     gping
+		harlequin
     httpie
     jq
+    lazydocker
+    lazygit
+		lazyjournal
+		lazysql
     lsd
     nmon
     procs
