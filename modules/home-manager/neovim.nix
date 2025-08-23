@@ -52,7 +52,6 @@
         plugin = oil-nvim;
         config = toLua "require(\"oil\").setup()";
       }
-			rustaceanvim
 			telescope-fzf-native-nvim
       {
         plugin = telescope-nvim;
