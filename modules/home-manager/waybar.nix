@@ -10,7 +10,7 @@
 
         modules-left = ["hyprland/workspaces"];
         modules-center = ["hyprland/window"];
-        modules-right = ["wlr/taskbar" "network" "cpu" "memory" "battery" "clock" "tray"];
+        modules-right = ["wlr/taskbar" "network" "cpu" "memory" "battery" "clock"];
 
         "hyprland/workspaces" = {
           disable-scroll = true;
@@ -47,26 +47,18 @@
           max-length = 75;
         };
 
-        tray = {
-          icon-size = 14;
-          spacing = 14;
-        };
-
         cpu = {
-          interval = 5;
           format = "󰍛";
-          on-click = "alacritty -e btop";
         };
 
         clock = {
           format = "{:%A %H:%M}";
           format-alt = "{:%d %B W%V %Y}";
           tooltip = false;
-          on-click-right = "~/.local/share/omarchy/bin/omarchy-cmd-tzupdate";
         };
 
         memory = {
-          format = "/ M {}%";
+          format = "{}% ";
         };
 
         battery = {
@@ -112,11 +104,11 @@
 
         "wlr/taskbar" = {
           format = "{icon}";
+        	icon-size = 20;
           all-outputs = true;
           active-first = true;
-          tooltip-format = "{name}";
+          tooltip-format = "{title}";
           on-click = "activate";
-          on-click-middle = "close";
           ignore-list = [
             "rofi"
           ];
@@ -132,7 +124,6 @@
           tooltip-format-ethernet = "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}";
           tooltip-format-disconnected = "Disconnected";
           interval = 3;
-          nospacing = 1;
           on-click = "alacritty --class=Impala -e impala";
         };
       };
@@ -156,38 +147,37 @@
       }
 
       /* - Genera rules for visible modules -- */
-      #custom-archicon,
-      #clock,
+			
+			#battery,
       #cpu,
-      #memory,
-      #disk,
-      #temperature,
-      #idle_inhibitor,
-      #pulseaudio,
-      #pulseaudio_slider,
-      #network,
-      #language {
+      #memory {
         color: #161320;
         margin-top: 6px;
         margin-bottom: 6px;
+        margin-left: 0px;
+        margin-right: 0px;
         padding-left: 10px;
         padding-right: 10px;
         transition: none;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
       }
 
       /* Separation to the left */
-      #custom-archicon,
-      #cpu,
-      #idle_inhibitor {
+      
+			#network {
+        color: #161320;
         margin-left: 5px;
         border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;
       }
 
-      /* Separation to the rigth */
-      #clock,
-      #temperature,
-      #language {
+      /* Separation to the right */
+      
+			#clock {
+        color: #161320;
         margin-right: 5px;
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
@@ -196,35 +186,8 @@
       /* -- Specific styles -- */
 
       /* Modules left */
-      #custom-archicon {
-        font-size: 20px;
-        color: #89B4FA;
-        background: #161320;
-        padding-right: 17px;
-      }
-
-      #clock {
-        background: #ABE9B3;
-      }
-
-      #cpu {
-        background: #96CDFB;
-      }
-
-      #memory {
-        background: #DDB6F2;
-      }
-
-      #disk {
-        background: #F5C2E7;
-      }
-
-      #temperature {
-        background: #F8BD96;
-      }
-
-      /* Modules center */
-      #workspaces {
+      
+			#workspaces {
         background: rgba(0, 0, 0, 0.5);
         border-radius: 10px;
         margin: 6px 5px;
@@ -252,11 +215,27 @@
       }
 
       #workspaces button.active:hover {}
+      
+			/* Modules right */
+      
+			#clock {
+        background: #ABE9B3;
+      }
 
-      /* Modules right */
-      #taskbar {
+      #cpu {
+        background: #96CDFB;
+      }
+
+      #memory {
+        background: #DDB6F2;
+      }
+      
+			#network {
+        background: #CBA6F7;
+      }
+
+			#taskbar {
         background: transparent;
-        border-radius: 10px;
         padding: 0px 5px;
         margin: 6px 5px;
       }
@@ -274,39 +253,6 @@
 
       #taskbar button:hover {
         background: rgba(34, 36, 54, 0.5);
-      }
-
-      #idle_inhibitor {
-        background: #B5E8E0;
-        padding-right: 15px;
-      }
-
-      #pulseaudio {
-        color: #1A1826;
-        background: #F5E0DC;
-      }
-
-      #pulseaudio_slider {
-        color: #1A1826;
-        background: #E8A2AF;
-      }
-
-      #network {
-        background: #CBA6F7;
-        padding-right: 13px;
-      }
-
-      #language {
-        background: #A6E3A1;
-        padding-right: 15px;
-      }
-
-      /* === Optional animation === */
-      @keyframes blink {
-        to {
-          background-color: #BF616A;
-          color: #B5E8E0;
-        }
       }
 
     '';
