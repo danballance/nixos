@@ -9,6 +9,7 @@
     ../../modules/nixos/docker.nix
     ../../modules/nixos/environment.nix
     ../../modules/nixos/fonts.nix
+    ../../modules/nixos/graphics.nix
     ../../modules/nixos/hyprland.nix
     ../../modules/nixos/localization.nix
     ../../modules/nixos/logind.nix

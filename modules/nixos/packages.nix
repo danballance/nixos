@@ -7,6 +7,7 @@
     wget
 
     # apps
+		aseprite
     brave
     claude-code
     code-cursor
@@ -14,6 +15,9 @@
     ghostty
     gitkraken
     jetbrains.datagrip
+		jetbrains.pycharm-professional
+    jetbrains.rust-rover
+		libresprite
     obsidian
     opencode
     proton-pass
@@ -26,7 +30,9 @@
 
     # modern cli tools
 		atac
+		atuin
     atop
+		bandwhich
     bat
 		below
     broot
@@ -37,18 +43,21 @@
     dust
     fd
     fzf
+		gobang
     gping
-		harlequin
     httpie
     jq
     lazydocker
     lazygit
 		lazyjournal
 		lazysql
+		ldtk
+		lnav
     lsd
     nmon
     procs
     ripgrep
+		unzip
     xh
     yazi
 
@@ -61,6 +70,7 @@
 		# rust
 		cargo
 		clippy
+		gcc
 		rust-analyzer
 		rustc
 		rustfmt
