@@ -1,7 +1,5 @@
 { ... }:
 {
-  services.logind.extraConfig = ''
-    HandlePowerKey=ignore
-  '';
+  services.logind.powerKey = "ignore";
 }
 

@@ -7,7 +7,7 @@
     profiles = {
       js = {
         extensions = with pkgs.vscode-marketplace; [
-          anthropic.claude-code
+					# anthropic.claude-code
           esbenp.prettier-vscode
           redhat.vscode-yaml
           vitest.explorer
@@ -23,7 +23,7 @@
       };
       rust = {
         extensions = with pkgs.vscode-marketplace; [
-          anthropic.claude-code
+					# anthropic.claude-code
           redhat.vscode-yaml
           jnoortheen.nix-ide
           tamasfe.even-better-toml
@@ -36,7 +36,7 @@
       };
       python = {
         extensions = with pkgs.vscode-marketplace; [
-          anthropic.claude-code
+					#anthropic.claude-code
           redhat.vscode-yaml
           jnoortheen.nix-ide
           tamasfe.even-better-toml
