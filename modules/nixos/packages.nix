@@ -57,6 +57,7 @@
     nmon
     procs
     ripgrep
+		systemctl-tui
 		unzip
     xh
     yazi
